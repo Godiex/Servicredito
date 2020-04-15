@@ -96,24 +96,15 @@ namespace CapaLogica
         {
             try
             {
-                RespuestaBusqueda respuestaBusqueda = Buscar(credito.Identificacion);
-                string respuesta = IntentarModificar(respuestaBusqueda, respuestaBusqueda);
-                return respuesta;
+                repositorioCredito.Modificar(credito);
+                return "Credito modificado";
             }
             catch (Exception e)
             {
                 return $"error {e.Message}";
             }
         }
-        public string IntentarModificar(RespuestaBusqueda respuestaBusqueda, RespuestaBusqueda liquidacionCuotaModeradora)
-        {
-            if (respuestaBusqueda.Credito != null)
-            {
-                repositorioCredito.Modificar(respuestaBusqueda.Credito);
-                return $"credito Modificado con exito";
-            }
-            return respuestaBusqueda.Mensaje;
-        }
+  
 
         public RespuestaBusqueda Buscar(string numeroDeLiquidacion)
         {

@@ -175,13 +175,10 @@ namespace Servicredito
             string tipo = credito.Interes.Tipo;
             InteresFactoria interesFactoria = new InteresFactoria();
             Interes interes = interesFactoria.CrearInteres(tipo, valorPrestado, tiempo, tasa);
-            interes.CalcularValorTotal();
             string identificaion = credito.Identificacion;
             Credito creditoAuxiliar = new Credito(identificaion, credito.Cliente, interes);
-            credito.ValorTotal = interes.ValorInteres;
+            creditoAuxiliar.ValorTotal = interes.ValorInteres;
             return creditoAuxiliar;
-
-
         }
     }
 }
